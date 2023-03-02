@@ -37,7 +37,7 @@ class Dojo:
     @classmethod
     def get_dojo_with_ninjas(cls, data):
         query = """SELECT * FROM dojos
-        LEFT JOIN ninjas on dojos.id = ninjas.dojo_id
+        LEFT JOIN ninjas ON ninjas.dojo_id = dojos.id
         WHERE dojos.id = %(id)s"""
         results = connectToMySQL(cls.DB).query_db(query, data)
         dojo = cls (results [0])

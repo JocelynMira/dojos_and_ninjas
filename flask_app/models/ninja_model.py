@@ -34,27 +34,27 @@ class Ninja:
             ninjas.append (cls (ninja) )
         return ninjas
 
+
     @classmethod
-    def get_one_ninja(cls, id):
-        query = """SELECT * FROM dojos LEFT JOIN
-                ninjas ON dojos.id = ninjas.dojo_id
-                WHERE dojos.id = %(id)s """
-        results = connectToMySQL(cls.DB).query_db(query, {"id": id})
-        dojo = cls (results[0])
+    def one_ninja(cls,id):
+        query = """SELECT * from ninjas
+                WHERE id = %(id)s """
+        results= connectToMySQL(cls.DB).query_db(query,{'id':id})
+        return cls(results[0])
 
-        for ninja in results:
-            ninja_info = {
-                'id' : ninja['id'],
-                'first_name' : ninja['first_name'],
-                'last_name' : ninja['last_name'],
-                'age' : ninja['age'],
-                'created_At' : ninja['created_at'],
-                'updated_at' : ninja['updated_at'],
-                'dojo_id' : ninja['dojo_id']
-            }
-            dojo.ninjas.append(Ninja(ninja_info))
-        print (ninja_info)
-        return ninja
+    # UPDATE
+    @classmethod
+    def update(cls, data):
+        query = """UPDATE ninjas
+                SET first_name = %(first_name)s, last_name = %(last_name)s, age = %(age)s
+                WHERE id = %(id)s; """
+        results = connectToMySQL(cls.DB).query_db(query, data)
+        return results
 
-
-
+    # DELETE
+    @classmethod
+    def delete(cls, id):
+        query = """DELETE FROM ninjas
+                WHERE id = %(id)s;"""
+        results = connectToMySQL(cls.DB).query_db(query, {'id': id})
+        return results

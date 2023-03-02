@@ -12,7 +12,7 @@
     <div class="d-flex justify-content-center">
         <section class="col-6 bg-dark p-4 my-5 mx-5 text-light">
             <h2 class="text-primary">{{dojo.name}} Ninjas</h2>
-            <table class="table table-bordered">
+            <table class="table table-bordered text-light">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -30,7 +30,7 @@
                         <td>{{ ninja.last_name }}</td>
                         <td>{{ ninja.age }}</td>
                         <td>
-                            <a href="/edit_ninja/{{ninja.id}}" class="edit" title="Edit" data-toggle="tooltip"><i class="fa-regular fa-pen-to-square"></i></a>
+                            <a href="/update_one_ninja/{{ninja.id}}" class="edit" title="Edit" data-toggle="tooltip"><i class="fa-regular fa-pen-to-square"></i></a>
                             <a href="/delete_ninja/{{ninja.id}}" class="delete" title="Delete" data-toggle="tooltip"><i class="fa-solid fa-trash-can"></i></a>
                         </td>
                     </tr> 
@@ -38,7 +38,7 @@
                 </tbody>
             </table>
             <div style="width:410px" align="end">
-                <a href="/" class="btn btn-secondary  mt-4">Home</a>
+                <a href="/" class="btn btn-secondary mt-4">Home</a>
             </div>
         </section>
     </div>
